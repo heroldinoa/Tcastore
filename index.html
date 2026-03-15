@@ -1,38 +1,39 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>T.castore</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T.castore</title>
 
 <style>
 body{
 font-family: Arial;
 margin:0;
-background:#f5f5f5;
+background:#f4f4f4;
 }
 
 header{
 background:black;
 color:white;
 text-align:center;
-padding:25px;
+padding:30px;
 }
 
 nav{
 background:#222;
-padding:10px;
-text-align:center;
+display:flex;
+justify-content:center;
 }
 
 nav a{
 color:white;
-margin:15px;
+padding:14px 20px;
 text-decoration:none;
-font-weight:bold;
 }
 
-section{
-padding:40px;
+.container{
+padding:20px;
 }
 
 .products{
@@ -45,16 +46,8 @@ gap:20px;
 background:white;
 padding:20px;
 border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
 text-align:center;
-}
-
-button{
-background:black;
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:5px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 footer{
@@ -62,9 +55,9 @@ background:black;
 color:white;
 text-align:center;
 padding:20px;
+margin-top:30px;
 }
 </style>
-
 </head>
 
 <body>
@@ -74,13 +67,7 @@ padding:20px;
 <p>Beauté • Style • Élégance</p>
 </header>
 
-<nav>
-<a href="#">Accueil</a>
-<a href="#">Cosmétiques</a>
-<a href="#">Contact</a>
-</nav>
-
-<section>
+<div class="container">
 
 <h2>Produits Cosmétiques</h2>
 
@@ -93,12 +80,7 @@ padding:20px;
 
 <div class="card">
 <h3>Dove</h3>
-<p>Savon et soin du corps</p>
-</div>
-
-<div class="card">
-<h3>CeraVe</h3>
-<p>Crème hydratante</p>
+<p>Savon corps</p>
 </div>
 
 <div class="card">
@@ -107,31 +89,23 @@ padding:20px;
 </div>
 
 <div class="card">
+<h3>CeraVe</h3>
+<p>Crème hydratante</p>
+</div>
+
+<div class="card">
 <h3>Shampoo</h3>
-<p>Soin pour cheveux</p>
+<p>Soin cheveux</p>
 </div>
 
 </div>
 
-</section>
-
-<section>
-
-<h2>Commander</h2>
-
-<p>Adresse : Ruelle Canneaux #11, Gonaïves</p>
-<p>Paiement : NatCash ou Cash</p>
-
-<a href="https://wa.me/50935206180">
-<button>Commander sur WhatsApp</button>
-</a>
-
-</section>
+</div>
 
 <footer>
-
-<p>© 2026 T.castore</p>
-
+<p>Adresse: Gonaïves - Ruelle Canneaux #11</p>
+<p>Paiement: Natcash</p>
+<p>Tel: +509 35206180</p>
 </footer>
 
 </body>

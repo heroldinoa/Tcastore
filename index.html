@@ -12,11 +12,12 @@ color:white;
 padding:15px;
 font-size:22px;
 text-align:center;
+font-weight:bold;
 }
 
 .search{
-padding:10px;
 background:#0071ce;
+padding:10px;
 }
 
 .search input{
@@ -43,6 +44,7 @@ text-align:center;
 .product img{
 width:100%;
 height:120px;
+object-fit:cover;
 }
 
 button{
@@ -111,9 +113,9 @@ box-shadow:0 -3px 10px rgba(0,0,0,0.3);
 <h3>Vaseline</h3>
 <p>$6</p>
 <button onclick="add('Vaseline',6)">Ajouter</button>
-</div></div><div id="cartBox"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><h3>Peye ak Natcash</h3><input placeholder="Natcash number"><button>Peye</button>
-
-</div><div id="loginBox"><h3>Login</h3><input placeholder="Email">
+</div></div><div id="cartBox"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><a href="https://natcash.com/send?phone=509XXXXXXXX" target="_blank">
+<button>Peye ak Natcash</button>
+</a></div><div id="loginBox"><h3>Login</h3><input placeholder="Email">
 <input placeholder="Password" type="password"><button>Login</button>
 
 <h3>Register</h3><input placeholder="Nom">

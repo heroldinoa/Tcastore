@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>T.castore</title>
 
 <style>
 
 body{
-background:black;
-color:white;
-font-family:Arial;
 margin:0;
+font-family:Arial;
+background:#111;
+color:white;
 }
 
 header{
-text-align:center;
-color:gold;
-padding:20px;
-font-size:30px;
+background:black;
+padding:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
-.container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
+.logo{
+color:gold;
+font-size:24px;
+font-weight:bold;
+}
+
+.search{
+width:40%;
+padding:8px;
+}
+
+.cart{
+color:black;
+background:gold;
+padding:8px 15px;
+border-radius:5px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:20px;
 }
 
 .product{
+background:#222;
 border:2px solid gold;
 border-radius:10px;
 padding:15px;
-margin:15px;
-width:200px;
 text-align:center;
-background:#111;
 }
 
 .product img{
@@ -48,11 +67,82 @@ margin-top:10px;
 border-radius:5px;
 }
 
-#cart{
+.whatsapp{
 position:fixed;
-top:10px;
-right:10px;
-background:gold;
-color:black;
-padding:10px;
-border-radius:5
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">T.castore</div>
+
+<input class="search" placeholder="Rechercher produit">
+
+<div class="cart">
+🛒 <span id="count">0</span>
+</div>
+
+</header>
+
+<div class="products">
+
+<div class="product">
+<img src="https://i.imgur.com/Qw7npIg.png">
+<h3>Vaseline</h3>
+<button onclick="addCart()">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/ZU3Z6GQ.png">
+<h3>Dove</h3>
+<button onclick="addCart()">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/H6G7B6s.png">
+<h3>CeraVe</h3>
+<button onclick="addCart()">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/7mG4k1S.png">
+<h3>Secret</h3>
+<button onclick="addCart()">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/mX4p7bE.png">
+<h3>Parfum</h3>
+<button onclick="addCart()">Ajouter</button>
+</div>
+
+</div>
+
+<a class="whatsapp" href="https://wa.me/50935206180">💬</a>
+
+<script>
+
+let cart = 0
+
+function addCart(){
+cart++
+document.getElementById("count").innerText = cart
+}
+
+</script>
+
+</body>
+</html>

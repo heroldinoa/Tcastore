@@ -7,12 +7,24 @@ background:#f5f5f5;
 }
 
 .header{
-background:#000;
-color:gold;
+background:#0071ce;
+color:white;
 padding:15px;
 font-size:22px;
 font-weight:bold;
 text-align:center;
+}
+
+.search{
+padding:10px;
+background:#0071ce;
+}
+
+.search input{
+width:100%;
+padding:10px;
+border-radius:20px;
+border:none;
 }
 
 .products{
@@ -41,8 +53,8 @@ font-weight:bold;
 }
 
 button{
-background:black;
-color:gold;
+background:#0071ce;
+color:white;
 border:none;
 padding:8px;
 border-radius:6px;
@@ -94,7 +106,7 @@ margin-top:10px;
 
 </style></head><body><div class="header">T.castore
 
-</div><div class="cart">🛒 <span id="count">0</span>
+</div><div class="search"><input placeholder="Search produit..."></div><div class="cart">🛒 <span id="count">0</span>
 
 </div><div class="products"><div class="product"><img src="https://via.placeholder.com/150"><h3>Secret</h3><div class="price">$7</div><button onclick="add()">Ajouter</button>
 
@@ -104,11 +116,13 @@ margin-top:10px;
 
 </div><div class="product"><img src="https://via.placeholder.com/150"><h3>Vaseline</h3><div class="price">$6</div><button onclick="add()">Ajouter</button>
 
-</div></div><div id="loginBox"><h3>Login T.castore</h3><input placeholder="Email"><input placeholder="Password" type="password"><button>Login</button>
+</div></div><div id="loginBox"><h3>Login</h3><input placeholder="Email"><input placeholder="Password" type="password"><button>Login</button>
+
+<h3>Register</h3><input placeholder="Nom"><input placeholder="Email"><input placeholder="Password" type="password"><button>Register</button>
 
 </div><div class="footer"><button>🏠 Home</button>
 
-<button onclick="openLogin()">👤 Login</button>
+<button onclick="openLogin()">👤 Account</button>
 
 <button>🛒 Cart</button>
 

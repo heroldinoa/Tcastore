@@ -1,4 +1,6 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>T.castore</title><style>
+<!DOCTYPE html><html><head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T.castore</title><style>
 
 body{
 margin:0;
@@ -8,8 +10,8 @@ background:#f5f5f5;
 
 .header{
 background:#1e5cc6;
-padding:15px;
 color:white;
+padding:15px;
 font-size:22px;
 font-weight:bold;
 }
@@ -46,6 +48,8 @@ text-align:center;
 width:100%;
 height:130px;
 object-fit:cover;
+border-radius:8px;
+cursor:pointer;
 }
 
 .price{
@@ -87,27 +91,27 @@ T.castore
 </div><div class="search">
 <input placeholder="Search produit...">
 </div><div class="products"><div class="product">
-<img src="vaseline.jpg">
+<img id="img1" src="https://via.placeholder.com/150" onclick="uploadImage('img1')">
 <h3>Vaseline</h3>
 <div class="price">$6</div>
 <button>Ajouter</button>
 </div><div class="product">
-<img src="dove.jpg">
+<img id="img2" src="https://via.placeholder.com/150" onclick="uploadImage('img2')">
 <h3>Dove</h3>
 <div class="price">$5</div>
 <button>Ajouter</button>
 </div><div class="product">
-<img src="cerave.jpg">
+<img id="img3" src="https://via.placeholder.com/150" onclick="uploadImage('img3')">
 <h3>CeraVe</h3>
 <div class="price">$12</div>
 <button>Ajouter</button>
 </div><div class="product">
-<img src="secret.jpg">
+<img id="img4" src="https://via.placeholder.com/150" onclick="uploadImage('img4')">
 <h3>Secret</h3>
 <div class="price">$7</div>
 <button>Ajouter</button>
 </div><div class="product">
-<img src="parfum.jpg">
+<img id="img5" src="https://via.placeholder.com/150" onclick="uploadImage('img5')">
 <h3>Parfum</h3>
 <div class="price">$20</div>
 <button>Ajouter</button>
@@ -115,5 +119,31 @@ T.castore
 🛒 0
 </div><a class="whatsapp" href="https://wa.me/50935206180">💬</a>
 
-</body>
-                 </html>
+<input type="file" id="fileInput" style="display:none"><script>
+
+function uploadImage(id){
+
+let input=document.getElementById("fileInput")
+
+input.onchange=function(e){
+
+let file=e.target.files[0]
+
+let reader=new FileReader()
+
+reader.onload=function(){
+
+document.getElementById(id).src=reader.result
+
+}
+
+reader.readAsDataURL(file)
+
+}
+
+input.click()
+
+}
+
+</script></body>
+</html>

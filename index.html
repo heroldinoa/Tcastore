@@ -1,5 +1,4 @@
-<!DOCTYPE html><html>
-<head>
+<!DOCTYPE html><html><head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>T.castore</title><style>
 
@@ -13,22 +12,9 @@ background:#f5f5f5;
 background:#1e5cc6;
 color:white;
 padding:15px;
-font-size:22px;
-font-weight:bold;
-}
-
-.search{
-background:white;
-margin:10px;
-padding:10px;
-border-radius:30px;
-}
-
-.search input{
-width:100%;
-border:none;
-outline:none;
-font-size:16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .products{
@@ -60,29 +46,43 @@ button{
 background:black;
 color:gold;
 border:none;
-padding:10px;
+padding:8px;
 border-radius:6px;
 margin-top:5px;
 }
 
-.cart{
-position:fixed;
-top:15px;
-right:15px;
+.cartIcon{
 background:white;
-padding:10px;
+padding:8px;
 border-radius:20px;
-font-weight:bold;
 }
 
-.command{
+#cartBox{
 position:fixed;
-bottom:80px;
-right:20px;
-background:black;
-color:gold;
-padding:12px;
-border-radius:10px;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+padding:15px;
+box-shadow:0 -3px 10px rgba(0,0,0,0.3);
+display:none;
+}
+
+#loginBox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+display:none;
+padding:20px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
 }
 
 .whatsapp{
@@ -96,67 +96,131 @@ border-radius:50%;
 text-decoration:none;
 }
 
-</style></head><body><div class="header">
-T.castore
-</div><div class="search">
-<input placeholder="Search produit...">
+</style></head><body><div class="header"><b>T.castore</b>
+
+<div class="cartIcon" onclick="openCart()">
+🛒 <span id="count">0</span>
+</div><button onclick="openLogin()">Login</button>
+
 </div><div class="products"><div class="product">
-<img src="https://i.imgur.com/0y0y0y0.png">
+<img src="https://via.placeholder.com/150">
 <h3>Vaseline</h3>
 <div class="price">$6</div>
-<button onclick="add('Vaseline',6)">Ajouter</button>
+<button onclick="addCart('Vaseline',6)">Ajouter</button>
 </div><div class="product">
-<img src="https://i.imgur.com/0y0y0y0.png">
+<img src="https://via.placeholder.com/150">
 <h3>Dove</h3>
 <div class="price">$5</div>
-<button onclick="add('Dove',5)">Ajouter</button>
+<button onclick="addCart('Dove',5)">Ajouter</button>
 </div><div class="product">
-<img src="https://i.imgur.com/0y0y0y0.png">
+<img src="https://via.placeholder.com/150">
 <h3>CeraVe</h3>
 <div class="price">$12</div>
-<button onclick="add('CeraVe',12)">Ajouter</button>
-</div><div class="product">
-<img src="https://i.imgur.com/0y0y0y0.png">
-<h3>Secret</h3>
-<div class="price">$7</div>
-<button onclick="add('Secret',7)">Ajouter</button>
-</div></div><div class="cart">
-🛒 <span id="count">0</span>
-</div><button class="command" onclick="order()">Commander</button>
+<button onclick="addCart('CeraVe',12)">Ajouter</button>
+</div></div><div id="cartBox"><h3>Panier</h3><ul id="cartItems"></ul>Total: $<span id="total">0</span>
 
-<a class="whatsapp" href="https://wa.me/50935206180">💬</a>
+<br><br>
+
+<button onclick="order()">Commander</button>
+<button onclick="closeCart()">Fermer</button>
+
+</div><div id="loginBox"><h2>Kreye kont</h2><input id="name" placeholder="Nom"><input id="email" placeholder="Email"><input id="password" placeholder="Password" type="password"><button onclick="createAccount()">Créer</button>
+
+<button onclick="closeLogin()">Fermer</button>
+
+</div><a class="whatsapp" href="https://wa.me/50935206180">💬</a>
 
 <script>
 
 let cart=[]
 let total=0
 
-function add(name,price){
 
-cart.push(name)
+function addCart(name,price){
+
+cart.push({name,price})
 total+=price
+
+updateCart()
+
+}
+
+
+function updateCart(){
 
 document.getElementById("count").innerText=cart.length
 
+let list=document.getElementById("cartItems")
+
+list.innerHTML=""
+
+cart.forEach((item,index)=>{
+
+list.innerHTML+=`<li>${item.name} $${item.price} <button onclick="removeItem(${index})">❌</button></li>`
+
+})
+
+document.getElementById("total").innerText=total
+
 }
+
+
+function removeItem(i){
+
+total-=cart[i].price
+cart.splice(i,1)
+
+updateCart()
+
+}
+
+
+function openCart(){
+document.getElementById("cartBox").style.display="block"
+}
+
+function closeCart(){
+document.getElementById("cartBox").style.display="none"
+}
+
 
 function order(){
 
 if(cart.length==0){
-
 alert("Panier vide")
-
 return
-
 }
 
-let message="Bonjour mwen vle kòmande: "+cart.join(", ")
+let text="Bonjour mwen vle kòmande: "
 
-let url="https://wa.me/50935206180?text="+encodeURIComponent(message)
+cart.forEach(i=>{
+text+=i.name+" "
+})
+
+let url="https://wa.me/50935206180?text="+encodeURIComponent(text)
 
 window.open(url)
 
 }
 
-</script></body>
-</html>
+
+function openLogin(){
+document.getElementById("loginBox").style.display="block"
+}
+
+function closeLogin(){
+document.getElementById("loginBox").style.display="none"
+}
+
+
+function createAccount(){
+
+let name=document.getElementById("name").value
+
+alert("Kont kreye pou "+name)
+
+closeLogin()
+
+}
+
+</script></body></html>

@@ -10,8 +10,8 @@ background:#f5f5f5;
 background:#0071ce;
 color:white;
 padding:15px;
-font-size:22px;
 text-align:center;
+font-size:22px;
 font-weight:bold;
 }
 
@@ -76,24 +76,11 @@ background:white;
 padding:20px;
 display:none;
 box-shadow:0 -3px 10px rgba(0,0,0,0.3);
-max-height:300px;
-overflow:auto;
-}
-
-#loginBox{
-position:fixed;
-bottom:60px;
-left:0;
-width:100%;
-background:white;
-padding:20px;
-display:none;
-box-shadow:0 -3px 10px rgba(0,0,0,0.3);
 }
 
 </style></head><body><div class="header">T.castore</div><div class="search">
 <input placeholder="Search produit...">
-</div><div id="products" class="products"><div class="product">
+</div><div class="products"><div class="product">
 <img src="https://via.placeholder.com/150">
 <h3>Secret</h3>
 <p>$7</p>
@@ -113,20 +100,13 @@ box-shadow:0 -3px 10px rgba(0,0,0,0.3);
 <h3>Vaseline</h3>
 <p>$6</p>
 <button onclick="add('Vaseline',6)">Ajouter</button>
-</div></div><div id="cartBox"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><a href="https://natcash.com/send?phone=509XXXXXXXX" target="_blank">
-<button>Peye ak Natcash</button>
-</a></div><div id="loginBox"><h3>Login</h3><input placeholder="Email">
-<input placeholder="Password" type="password"><button>Login</button>
-
-<h3>Register</h3><input placeholder="Nom">
-<input placeholder="Email">
-<input placeholder="Password"><button>Register</button>
+</div></div><div id="cartBox"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><button onclick="payNatcash()">Peye ak Natcash</button>
 
 </div><div class="footer"><button onclick="home()">🏠 Home</button>
 
 <button onclick="openCart()">🛒 Cart</button>
 
-<button onclick="openLogin()">👤 Account</button>
+<button>👤 Account</button>
 
 </div><script>
 
@@ -136,9 +116,7 @@ let total=0
 function add(name,price){
 
 cart.push({name,price})
-
 total+=price
-
 updateCart()
 
 }
@@ -146,13 +124,13 @@ updateCart()
 function updateCart(){
 
 let list=document.getElementById("cartItems")
-
 list.innerHTML=""
 
 cart.forEach((item,i)=>{
 
 list.innerHTML+=
-"<li>"+item.name+" $"+item.price+" <button onclick='removeItem("+i+")'>X</button></li>"
+"<li>"+item.name+" $"+item.price+
+" <button onclick='removeItem("+i+")'>X</button></li>"
 
 })
 
@@ -163,9 +141,7 @@ document.getElementById("total").innerText=total
 function removeItem(i){
 
 total-=cart[i].price
-
 cart.splice(i,1)
-
 updateCart()
 
 }
@@ -178,19 +154,19 @@ box.style.display=box.style.display=="block"?"none":"block"
 
 }
 
-function openLogin(){
-
-let box=document.getElementById("loginBox")
-
-box.style.display=box.style.display=="block"?"none":"block"
-
-}
-
 function home(){
 
 document.getElementById("cartBox").style.display="none"
 
-document.getElementById("loginBox").style.display="none"
+}
+
+function payNatcash(){
+
+let phone="50935206180"
+
+let url="https://natcash.com/send?phone="+phone+"&amount="+total
+
+window.open(url,"_blank")
 
 }
 

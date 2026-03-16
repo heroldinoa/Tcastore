@@ -8,7 +8,7 @@
 body{
 font-family:Arial;
 margin:0;
-background:#f4f6f9;
+background:#eef2f6;
 }
 
 header{
@@ -20,66 +20,69 @@ justify-content:space-between;
 align-items:center;
 }
 
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
 nav a{
 color:white;
-margin-left:12px;
+margin-left:15px;
 text-decoration:none;
 font-weight:bold;
 }
 
 .search{
 padding:15px;
-background:#1976d2;
+background:white;
 }
 
 .search input{
 width:100%;
 padding:12px;
-border-radius:30px;
-border:none;
+border-radius:8px;
+border:1px solid #ccc;
 }
 
 .products{
 display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-padding:18px;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:15px;
 }
 
 .product{
 background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+border-radius:10px;
+padding:12px;
+text-align:center;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
 }
 
 .product img{
 width:100%;
-height:150px;
+height:140px;
 object-fit:cover;
+border-radius:8px;
 }
 
-.info{
-padding:12px;
-text-align:center;
-}
-
-.info h3{
-margin:5px 0;
+.product h3{
+margin:10px 0 5px;
 }
 
 .price{
+color:#1976d2;
 font-size:18px;
 font-weight:bold;
-color:#333;
 }
 
 button{
 background:#1976d2;
 color:white;
 border:none;
-padding:10px 16px;
-border-radius:20px;
+padding:10px;
+border-radius:6px;
+width:100%;
 margin-top:8px;
 }
 
@@ -90,57 +93,58 @@ margin-top:8px;
 
 <header>
 
-<h2>T.castore</h2>
+<div class="logo">T.castore</div>
 
 <nav>
 <a href="#">Home</a>
 <a href="#">Login</a>
 <a href="#">Register</a>
-<a href="#">🛒0</a>
+<a href="#">🛒 0</a>
 </nav>
 
 </header>
 
+
 <div class="search">
-<input placeholder="Search produit...">
+<input type="text" placeholder="Search produit...">
 </div>
+
 
 <div class="products">
 
 <div class="product">
 <img src="https://m.media-amazon.com/images/I/61L3bH2qOIL.jpg">
-<div class="info">
 <h3>Dove</h3>
 <p class="price">$5</p>
 <button>Ajouter</button>
 </div>
-</div>
 
 <div class="product">
 <img src="https://m.media-amazon.com/images/I/61QKQ9K4GML.jpg">
-<div class="info">
 <h3>Secret</h3>
 <p class="price">$7</p>
 <button>Ajouter</button>
 </div>
-</div>
 
 <div class="product">
 <img src="https://m.media-amazon.com/images/I/71Q8VjYxE9L.jpg">
-<div class="info">
 <h3>Parfum</h3>
 <p class="price">$15</p>
 <button>Ajouter</button>
 </div>
-</div>
 
 <div class="product">
 <img src="https://m.media-amazon.com/images/I/71H8dQxYy7L.jpg">
-<div class="info">
 <h3>Vaseline</h3>
 <p class="price">$6</p>
 <button>Ajouter</button>
 </div>
+
+<div class="product">
+<img src="https://m.media-amazon.com/images/I/61sR8BqC7GL.jpg">
+<h3>Cerave</h3>
+<p class="price">$12</p>
+<button>Ajouter</button>
 </div>
 
 </div>

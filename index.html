@@ -1,106 +1,122 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html><html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>T.castore</title><style>
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:#f4f4f4;
+font-family:Arial;
+background:#f2f2f2;
 }
 
-header{
-background:black;
-color:gold;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 20px;
-}
+/* header */
 
-.logo{
-font-size:24px;
-font-weight:bold;
-}
-
-.cart{
-background:gold;
-color:black;
-padding:8px 15px;
-border-radius:5px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.livraison{
-background:gold;
-color:black;
-text-align:center;
+.header{
+background:#0a5bd3;
 padding:10px;
-font-weight:bold;
+color:white;
 }
+
+.search{
+background:white;
+padding:10px;
+border-radius:30px;
+display:flex;
+align-items:center;
+}
+
+.search input{
+border:none;
+outline:none;
+flex:1;
+font-size:16px;
+}
+
+/* categories */
+
+.categories{
+display:flex;
+overflow:auto;
+gap:10px;
+padding:10px;
+background:white;
+}
+
+.cat{
+background:#eee;
+padding:8px 15px;
+border-radius:20px;
+white-space:nowrap;
+}
+
+/* banner */
+
+.banner{
+background:#cde3a5;
+margin:10px;
+padding:20px;
+border-radius:10px;
+}
+
+/* products */
 
 .products{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-padding:20px;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+padding:10px;
 }
 
 .product{
 background:white;
+padding:10px;
 border-radius:10px;
-padding:15px;
 text-align:center;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
 }
 
 .product img{
-width:150px;
-height:150px;
+width:100%;
+height:120px;
 object-fit:cover;
+}
+
+.price{
+color:green;
+font-weight:bold;
 }
 
 button{
 background:black;
 color:gold;
 border:none;
-padding:10px;
+padding:8px;
+margin-top:5px;
 border-radius:5px;
-margin-top:10px;
-cursor:pointer;
 }
 
-button:hover{
-background:gold;
-color:black;
+/* cart */
+
+.cart{
+position:fixed;
+top:15px;
+right:15px;
+background:white;
+padding:8px 12px;
+border-radius:20px;
+font-weight:bold;
 }
 
 #cartBox{
 display:none;
 position:fixed;
-top:70px;
-right:20px;
-width:300px;
+bottom:0;
 background:white;
-border-radius:10px;
+width:100%;
 padding:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.3);
-max-height:400px;
-overflow:auto;
+box-shadow:0 -3px 10px rgba(0,0,0,0.3);
 }
 
-.checkout{
-background:gold;
-color:black;
-padding:12px;
-border-radius:8px;
-text-align:center;
-margin-top:10px;
-cursor:pointer;
-font-weight:bold;
-}
+/* whatsapp */
 
 .whatsapp{
 position:fixed;
@@ -110,81 +126,76 @@ background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-font-size:22px;
 text-decoration:none;
+font-size:20px;
 }
 
-</style></head><body><header><div class="logo">T.castore</div><div class="cart" onclick="toggleCart()">
-🛒 <span id="count">0</span>
-</div></header><div class="livraison">
-🚚 Livraison disponib | Nou livre nan zòn nan
-</div><div class="products"><div class="product">
+</style></head><body><div class="header"><div class="search">
+<input placeholder="Search produit...">
+</div></div><div class="categories"><div class="cat">Cosmétiques</div>
+<div class="cat">Parfum</div>
+<div class="cat">Shampoo</div>
+<div class="cat">Crème</div></div><div class="banner"><h2>Trending produits</h2>
+<p>Bon prix sou cosmétiques</p></div><div class="products"><div class="product">
 <img src="vaseline.jpg">
 <h3>Vaseline</h3>
-<p>$6</p>
+<div class="price">$6</div>
 <button onclick="addCart('Vaseline',6)">Ajouter</button>
 </div><div class="product">
 <img src="dove.jpg">
 <h3>Dove</h3>
-<p>$5</p>
+<div class="price">$5</div>
 <button onclick="addCart('Dove',5)">Ajouter</button>
 </div><div class="product">
 <img src="cerave.jpg">
 <h3>CeraVe</h3>
-<p>$12</p>
+<div class="price">$12</div>
 <button onclick="addCart('CeraVe',12)">Ajouter</button>
 </div><div class="product">
 <img src="secret.jpg">
 <h3>Secret</h3>
-<p>$7</p>
+<div class="price">$7</div>
 <button onclick="addCart('Secret',7)">Ajouter</button>
 </div><div class="product">
 <img src="parfum.jpg">
 <h3>Parfum</h3>
-<p>$20</p>
+<div class="price">$20</div>
 <button onclick="addCart('Parfum',20)">Ajouter</button>
-</div></div><div id="cartBox"><h2>Panier</h2><ul id="cartItems"></ul><h3>Total: $<span id="total">0</span></h3><div class="checkout" onclick="orderWhatsApp()">
-Commander
-</div></div><a class="whatsapp" href="https://wa.me/50935206180">💬</a>
+</div></div><div class="cart" onclick="toggleCart()">
+🛒 <span id="count">0</span>
+</div><div id="cartBox"><h3>Panier</h3><ul id="items"></ul>Total: $<span id="total">0</span>
+
+<br><br>
+
+<button onclick="order()">Commander WhatsApp</button>
+
+</div><a class="whatsapp" href="https://wa.me/50935206180">💬</a>
 
 <script>
 
 let cart=[]
 let total=0
 
-function addCart(product,price){
-cart.push({product,price})
+function addCart(name,price){
+
+cart.push({name,price})
 total+=price
-updateCart()
+
+update()
+
 }
 
-function updateCart(){
+function update(){
 
 document.getElementById("count").innerText=cart.length
 document.getElementById("total").innerText=total
 
-let list=document.getElementById("cartItems")
+let list=document.getElementById("items")
 list.innerHTML=""
 
-cart.forEach((item,index)=>{
-
-list.innerHTML+=`
-<li>
-${item.product} - $${item.price}
-<button onclick="removeItem(${index})">❌</button>
-</li>
-`
-
+cart.forEach(i=>{
+list.innerHTML+=`<li>${i.name} $${i.price}</li>`
 })
-
-}
-
-function removeItem(i){
-
-total-=cart[i].price
-cart.splice(i,1)
-
-updateCart()
 
 }
 
@@ -192,22 +203,19 @@ function toggleCart(){
 
 let box=document.getElementById("cartBox")
 
-box.style.display = box.style.display==="block" ? "none" : "block"
+box.style.display=box.style.display=="block"?"none":"block"
 
 }
 
-function orderWhatsApp(){
+function order(){
 
-if(cart.length==0){
-alert("Panier vide")
-return
-}
+let text="Bonjour mwen vle kòmande: "
 
-let products=cart.map(p=>p.product).join(", ")
+cart.forEach(i=>{
+text+=i.name+" "
+})
 
-let message="Bonjour, mwen vle kòmande: "+products+" Total: $"+total
-
-let url="https://wa.me/50935206180?text="+encodeURIComponent(message)
+let url="https://wa.me/50935206180?text="+encodeURIComponent(text)
 
 window.open(url)
 

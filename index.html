@@ -31,7 +31,7 @@ text-align:center;
 
 .product img{
 width:100%;
-height:120px;
+height:130px;
 object-fit:cover;
 }
 
@@ -58,15 +58,61 @@ padding:10px;
 border-radius:20px;
 }
 
+.footer{
+position:fixed;
+bottom:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:10px;
+border-top:1px solid #ccc;
+}
+
+.footer button{
+background:none;
+color:black;
+font-weight:bold;
+}
+
+#loginBox{
+position:fixed;
+bottom:60px;
+left:0;
+width:100%;
+background:white;
+padding:20px;
+display:none;
+box-shadow:0 -3px 10px rgba(0,0,0,0.3);
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+}
+
 </style></head><body><div class="header">T.castore
 
 </div><div class="cart">🛒 <span id="count">0</span>
 
-</div><div class="products"><div class="product"><img src="https://via.placeholder.com/150"><h3>Vaseline</h3><div class="price">$6</div><button onclick="add()">Ajouter</button>
+</div><div class="products"><div class="product"><img src="https://via.placeholder.com/150"><h3>Secret</h3><div class="price">$7</div><button onclick="add()">Ajouter</button>
+
+</div><div class="product"><img src="https://via.placeholder.com/150"><h3>Parfum</h3><div class="price">$15</div><button onclick="add()">Ajouter</button>
 
 </div><div class="product"><img src="https://via.placeholder.com/150"><h3>Dove</h3><div class="price">$5</div><button onclick="add()">Ajouter</button>
 
-</div></div><script>
+</div><div class="product"><img src="https://via.placeholder.com/150"><h3>Vaseline</h3><div class="price">$6</div><button onclick="add()">Ajouter</button>
+
+</div></div><div id="loginBox"><h3>Login T.castore</h3><input placeholder="Email"><input placeholder="Password" type="password"><button>Login</button>
+
+</div><div class="footer"><button>🏠 Home</button>
+
+<button onclick="openLogin()">👤 Login</button>
+
+<button>🛒 Cart</button>
+
+</div><script>
 
 let count=0
 
@@ -75,6 +121,22 @@ function add(){
 count++
 
 document.getElementById("count").innerText=count
+
+}
+
+function openLogin(){
+
+let box=document.getElementById("loginBox")
+
+if(box.style.display=="block"){
+
+box.style.display="none"
+
+}else{
+
+box.style.display="block"
+
+}
 
 }
 

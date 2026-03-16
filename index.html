@@ -8,7 +8,7 @@
 body{
 font-family:Arial;
 margin:0;
-background:#f2f2f2;
+background:#f3f3f3;
 }
 
 header{
@@ -40,94 +40,121 @@ border:none;
 }
 
 .products{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-padding:20px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:15px;
 }
 
 .product{
-width:160px;
 background:white;
-border-radius:10px;
-padding:10px;
+border-radius:12px;
+padding:15px;
 text-align:center;
 box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
 .product img{
 width:100%;
-height:120px;
+height:140px;
 object-fit:cover;
-border-radius:8px;
+border-radius:10px;
+}
+
+.product h3{
+margin:10px 0 5px;
+}
+
+.product p{
+font-size:18px;
 }
 
 button{
 background:#1976d2;
 color:white;
 border:none;
-padding:8px 12px;
-border-radius:6px;
+padding:10px 15px;
+border-radius:8px;
 margin-top:8px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <h2>T.castore</h2>
 
 <nav>
 <a href="#">Home</a>
 <a href="#">Login</a>
 <a href="#">Register</a>
-<a href="#">🛒0</a>
+<a href="#">🛒 2</a>
 </nav>
 
 </header>
 
 <div class="search">
+
 <input placeholder="Search produit...">
+
 </div>
+
 
 <div class="products">
 
 <div class="product">
+
 <img src="https://m.media-amazon.com/images/I/61L3bH2qOIL.jpg">
+
 <h3>Dove</h3>
+
 <p>$5</p>
+
 <button>Ajouter</button>
+
 </div>
 
+
 <div class="product">
+
 <img src="https://m.media-amazon.com/images/I/61QKQ9K4GML.jpg">
+
 <h3>Secret</h3>
+
 <p>$7</p>
+
 <button>Ajouter</button>
+
 </div>
 
+
 <div class="product">
+
 <img src="https://m.media-amazon.com/images/I/71Q8VjYxE9L.jpg">
+
 <h3>Parfum</h3>
+
 <p>$15</p>
+
 <button>Ajouter</button>
+
 </div>
 
+
 <div class="product">
+
 <img src="https://m.media-amazon.com/images/I/71H8dQxYy7L.jpg">
-<h3>Vaseline</h3>
-<p>$6</p>
-<button>Ajouter</button>
-</div>
 
-<div class="product">
-<img src="https://m.media-amazon.com/images/I/61sR8BqC7GL.jpg">
-<h3>Cerave</h3>
-<p>$12</p>
+<h3>Vaseline</h3>
+
+<p>$6</p>
+
 <button>Ajouter</button>
+
 </div>
 
 </div>

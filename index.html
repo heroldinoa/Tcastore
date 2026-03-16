@@ -76,6 +76,8 @@ background:white;
 padding:20px;
 display:none;
 box-shadow:0 -3px 10px rgba(0,0,0,0.3);
+max-height:300px;
+overflow:auto;
 }
 
 </style></head><body><div class="header">T.castore</div><div class="search">
@@ -100,7 +102,14 @@ box-shadow:0 -3px 10px rgba(0,0,0,0.3);
 <h3>Vaseline</h3>
 <p>$6</p>
 <button onclick="add('Vaseline',6)">Ajouter</button>
-</div></div><div id="cartBox"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><button onclick="payNatcash()">Peye ak Natcash</button>
+</div><div class="product">
+<img src="https://via.placeholder.com/150">
+<h3>CeraVe</h3>
+<p>$12</p>
+<button onclick="add('CeraVe',12)">Ajouter</button>
+</div></div><div id="cartBox"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><p>🚚 Livraison gratis</p><button onclick="payNatcash()">Peye ak Natcash</button>
+
+<button onclick="payMoncash()">Peye ak Moncash</button>
 
 </div><div class="footer"><button onclick="home()">🏠 Home</button>
 
@@ -116,7 +125,9 @@ let total=0
 function add(name,price){
 
 cart.push({name,price})
+
 total+=price
+
 updateCart()
 
 }
@@ -124,6 +135,7 @@ updateCart()
 function updateCart(){
 
 let list=document.getElementById("cartItems")
+
 list.innerHTML=""
 
 cart.forEach((item,i)=>{
@@ -141,7 +153,9 @@ document.getElementById("total").innerText=total
 function removeItem(i){
 
 total-=cart[i].price
+
 cart.splice(i,1)
+
 updateCart()
 
 }
@@ -165,6 +179,16 @@ function payNatcash(){
 let phone="50935206180"
 
 let url="https://natcash.com/send?phone="+phone+"&amount="+total
+
+window.open(url,"_blank")
+
+}
+
+function payMoncash(){
+
+let phone="50935206180"
+
+let url="https://moncashbutton.digicelgroup.com/pay?phone="+phone+"&amount="+total
 
 window.open(url,"_blank")
 

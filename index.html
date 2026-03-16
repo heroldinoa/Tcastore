@@ -1,38 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T.castore</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f4f4;
+}
+
+header{
+background:black;
+color:gold;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.cart{
+background:gold;
+color:black;
+padding:8px 15px;
+border-radius:5px;
+font-weight:bold;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.product{
+background:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.product img{
+width:150px;
+height:150px;
+object-fit:cover;
+}
+
+button{
+background:black;
+color:gold;
+border:none;
+padding:10px;
+border-radius:5px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:gold;
+color:black;
+}
+
+.cartBox{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:10px;
+}
+
+.checkout{
+background:gold;
+color:black;
+padding:12px;
+border-radius:8px;
+text-align:center;
+margin-top:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:22px;
+text-decoration:none;
+}
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">T.castore</div>
+
+<div class="cart">
+🛒 <span id="count">0</span>
+</div>
+
+</header>
+
 <div class="products">
 
 <div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Vaseline.jpg">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
 <h3>Vaseline</h3>
 <p>$6</p>
 <button onclick="addCart('Vaseline',6)">Ajouter</button>
 </div>
 
 <div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Dove_soap.jpg">
+<img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
 <h3>Dove</h3>
 <p>$5</p>
 <button onclick="addCart('Dove',5)">Ajouter</button>
 </div>
 
 <div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/CeraVe_Moisturizing_Cream.jpg">
+<img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3">
 <h3>CeraVe</h3>
 <p>$12</p>
 <button onclick="addCart('CeraVe',12)">Ajouter</button>
 </div>
 
 <div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Secret_Deodorant.jpg">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348">
 <h3>Secret</h3>
 <p>$7</p>
 <button onclick="addCart('Secret',7)">Ajouter</button>
 </div>
 
 <div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Perfume_bottle.jpg">
+<img src="https://images.unsplash.com/photo-1594035910387-fea47794261f">
 <h3>Parfum</h3>
 <p>$20</p>
 <button onclick="addCart('Parfum',20)">Ajouter</button>
 </div>
 
 </div>
+
+<div class="cartBox">
+
+<h2>Panier</h2>
+
+<ul id="cartItems"></ul>
+
+<h3>Total: $<span id="total">0</span></h3>
+
+<div class="checkout" onclick="orderWhatsApp()">
+Commander
+</div>
+
+</div>
+
+<a class="whatsapp" href="https://wa.me/50935206180">💬</a>
+
+<footer>
+
+Adresse: Gonaïves Ruelle Canneaux #11<br>
+Paiement: Natcash / Cash
+
+</footer>
+
+<script>
+
+let cart=[]
+let total=0
+
+function addCart(product,price){
+
+cart.push(product)
+total+=price
+
+document.getElementById("count").innerText=cart.length
+document.getElementById("total").innerText=total
+
+showCart()
+
+}
+
+function showCart(){
+
+let list=document.getElementById("cartItems")
+list.innerHTML=""
+
+cart.forEach((item,index)=>{
+
+list.innerHTML+=`
+<li>
+${item}
+<button onclick="removeItem(${index})">Retirer</button>
+</li>
+`
+
+})
+
+}
+
+function removeItem(i){
+
+cart.splice(i,1)
+location.reload()
+
+}
+
+function orderWhatsApp(){
+
+if(cart.length==0){
+alert("Panier vide")
+return
+}
+
+let message="Bonjour, mwen vle kòmande: "+cart.join(", ")+" Total: $"+total
+
+let url="https://wa.me/50935206180?text="+encodeURIComponent(message)
+
+window.open(url)
+
+}
+
+</script>
+
+</body>
+</html>

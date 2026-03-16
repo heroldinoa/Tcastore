@@ -1,196 +1,296 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>T.castore</title><style>
+
+<title>T.castore</title>
+
+<style>
 
 body{
-margin:0;
 font-family:Arial;
-background:#f2f2f2;
+margin:0;
+background:#f5f5f5;
 }
 
-.header{
-background:#0071ce;
+header{
+background:#1976d2;
 color:white;
-padding:10px;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
-.logo{
-font-size:22px;
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
 font-weight:bold;
 }
 
-.menu a{
-color:white;
-margin:0 8px;
-text-decoration:none;
-font-size:15px;
-}
-
-.cart{
-font-size:20px;
-cursor:pointer;
-}
-
 .search{
-background:#0071ce;
-padding:10px;
+padding:15px;
+background:#1976d2;
 }
 
 .search input{
 width:100%;
-padding:8px;
-border:none;
+padding:12px;
 border-radius:20px;
+border:none;
 }
 
 .products{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:10px;
-padding:10px;
+gap:15px;
+padding:15px;
 }
 
 .product{
 background:white;
-padding:10px;
-border-radius:8px;
+padding:15px;
+border-radius:10px;
 text-align:center;
 }
 
 .product img{
-width:100%;
-height:130px;
+width:120px;
+height:120px;
 object-fit:cover;
 }
 
 button{
-background:#0071ce;
+background:#1976d2;
 color:white;
 border:none;
-padding:8px;
-border-radius:6px;
-margin-top:5px;
+padding:10px 15px;
+border-radius:8px;
+margin-top:10px;
 }
 
-#cartBox{
-position:fixed;
-right:0;
-top:60px;
-width:250px;
-background:white;
-padding:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
+.cartBox{
+padding:20px;
 display:none;
 }
 
-</style></head><body><div class="header"><div class="logo">T.castore</div><div class="menu"><a href="#">Home</a>
-<a href="#">Login</a>
-<a href="#">Register</a>
+.loginBox, .registerBox{
+display:none;
+padding:20px;
+}
 
-</div><div class="cart" onclick="toggleCart()">
-🛒 <span id="count">0</span>
-</div></div><div class="search">
-<input placeholder="Search produit...">
-</div><div class="products"><div class="product">
-<img src="https://via.placeholder.com/150">
+input{
+padding:10px;
+width:100%;
+margin:5px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h2>T.castore</h2>
+
+<nav>
+
+<a href="#" onclick="home()">Home</a>
+<a href="#" onclick="login()">Login</a>
+<a href="#" onclick="register()">Register</a>
+<a href="#" onclick="cart()">🛒 <span id="cartCount">0</span></a>
+
+</nav>
+
+</header>
+
+
+<div class="search">
+<input type="text" placeholder="Search produit..." onkeyup="searchProduct(this.value)">
+</div>
+
+
+<div class="products" id="products">
+
+<div class="product">
+<img src="https://i.imgur.com/1bX5QH6.jpg">
 <h3>Dove</h3>
 <p>$5</p>
-<button onclick="add('Dove',5)">Ajouter</button>
-</div><div class="product">
-<img src="https://via.placeholder.com/150">
+<button onclick="addCart('Dove',5)">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/BR3N6sT.jpg">
 <h3>Secret</h3>
 <p>$7</p>
-<button onclick="add('Secret',7)">Ajouter</button>
-</div><div class="product">
-<img src="https://via.placeholder.com/150">
+<button onclick="addCart('Secret',7)">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/6yYx7R0.jpg">
 <h3>Parfum</h3>
 <p>$15</p>
-<button onclick="add('Parfum',15)">Ajouter</button>
-</div><div class="product">
-<img src="https://via.placeholder.com/150">
+<button onclick="addCart('Parfum',15)">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/Pr1s4vM.jpg">
 <h3>Vaseline</h3>
 <p>$6</p>
-<button onclick="add('Vaseline',6)">Ajouter</button>
-</div><div class="product">
-<img src="https://via.placeholder.com/150">
-<h3>CeraVe</h3>
+<button onclick="addCart('Vaseline',6)">Ajouter</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/7wKQZ8U.jpg">
+<h3>Cerave</h3>
 <p>$12</p>
-<button onclick="add('CeraVe',12)">Ajouter</button>
-</div></div><div id="cartBox"><h3>Panier</h3><ul id="items"></ul><p>Total: $<span id="total">0</span></p><p>🚚 Livraison gratis</p><button onclick="natcash()">Peye Natcash</button>
-<button onclick="moncash()">Peye MonCash</button>
+<button onclick="addCart('Cerave',12)">Ajouter</button>
+</div>
 
-</div><script>
+</div>
 
-let cart=[]
-let total=0
 
-function add(name,price){
+<div class="cartBox" id="cartBox">
 
-cart.push({name,price})
+<h2>Panye ou</h2>
 
-total+=price
+<ul id="cartItems"></ul>
 
-update()
+<p><b>Livrezon: GRATIS</b></p>
+
+<button onclick="payMoncash()">Peye pa MonCash</button>
+
+<button onclick="payNatcash()">Peye pa NatCash</button>
+
+</div>
+
+
+<div class="loginBox" id="loginBox">
+
+<h2>Login</h2>
+
+<input placeholder="Email">
+
+<input type="password" placeholder="Password">
+
+<button>Login</button>
+
+</div>
+
+
+<div class="registerBox" id="registerBox">
+
+<h2>Register</h2>
+
+<input placeholder="Name">
+
+<input placeholder="Email">
+
+<input type="password" placeholder="Password">
+
+<button>Create account</button>
+
+</div>
+
+
+
+<script>
+
+let cartList=[]
+let count=0
+
+function addCart(name,price){
+
+cartList.push(name+" - $"+price)
+
+count++
+
+document.getElementById("cartCount").innerText=count
 
 }
 
-function update(){
+function cart(){
 
-let list=document.getElementById("items")
+document.getElementById("products").style.display="none"
+document.getElementById("loginBox").style.display="none"
+document.getElementById("registerBox").style.display="none"
+document.getElementById("cartBox").style.display="block"
 
-list.innerHTML=""
+let list=""
 
-cart.forEach((item,index)=>{
+cartList.forEach(p=>{
 
-list.innerHTML +=
-"<li>"+item.name+" $"+item.price+
-" <button onclick='remove("+index+")'>X</button></li>"
+list+="<li>"+p+"</li>"
 
 })
 
-document.getElementById("total").innerText=total
-
-document.getElementById("count").innerText=cart.length
+document.getElementById("cartItems").innerHTML=list
 
 }
 
-function remove(index){
+function home(){
 
-total-=cart[index].price
-
-cart.splice(index,1)
-
-update()
+document.getElementById("products").style.display="grid"
+document.getElementById("loginBox").style.display="none"
+document.getElementById("registerBox").style.display="none"
+document.getElementById("cartBox").style.display="none"
 
 }
 
-function toggleCart(){
+function login(){
 
-let box=document.getElementById("cartBox")
+document.getElementById("products").style.display="none"
+document.getElementById("loginBox").style.display="block"
+document.getElementById("registerBox").style.display="none"
+document.getElementById("cartBox").style.display="none"
 
-if(box.style.display=="block"){
-box.style.display="none"
+}
+
+function register(){
+
+document.getElementById("products").style.display="none"
+document.getElementById("loginBox").style.display="none"
+document.getElementById("registerBox").style.display="block"
+document.getElementById("cartBox").style.display="none"
+
+}
+
+function payMoncash(){
+
+window.location.href="https://moncashbutton.digicelgroup.com"
+
+}
+
+function payNatcash(){
+
+window.location.href="https://natcash.com"
+
+}
+
+function searchProduct(value){
+
+value=value.toLowerCase()
+
+document.querySelectorAll(".product").forEach(p=>{
+
+let name=p.innerText.toLowerCase()
+
+if(name.includes(value)){
+
+p.style.display="block"
+
 }else{
-box.style.display="block"
-}
+
+p.style.display="none"
 
 }
 
-function natcash(){
-
-alert("Peye sou Natcash: 35206180")
+})
 
 }
 
-function moncash(){
+</script>
 
-alert("Peye sou MonCash: 35206180")
-
-}
-
-</script></body>
+</body>
 </html>

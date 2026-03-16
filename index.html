@@ -10,7 +10,7 @@
 body{
 margin:0;
 font-family:Arial;
-background:#f5f5f5;
+background:#f2f2f2;
 }
 
 header{
@@ -61,6 +61,17 @@ margin-top:10px;
 color:white;
 }
 
+.checkout{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#ff9900;
+padding:12px;
+border-radius:8px;
+color:white;
+cursor:pointer;
+}
+
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -94,45 +105,64 @@ text-decoration:none;
 <div class="product">
 <img src="https://i.imgur.com/Qw7npIg.png">
 <h3>Vaseline</h3>
-<button onclick="addCart()">Ajouter</button>
+<button onclick="addCart('Vaseline')">Ajouter</button>
 </div>
 
 <div class="product">
 <img src="https://i.imgur.com/ZU3Z6GQ.png">
 <h3>Dove</h3>
-<button onclick="addCart()">Ajouter</button>
+<button onclick="addCart('Dove')">Ajouter</button>
 </div>
 
 <div class="product">
 <img src="https://i.imgur.com/H6G7B6s.png">
 <h3>CeraVe</h3>
-<button onclick="addCart()">Ajouter</button>
+<button onclick="addCart('CeraVe')">Ajouter</button>
 </div>
 
 <div class="product">
 <img src="https://i.imgur.com/7mG4k1S.png">
 <h3>Secret</h3>
-<button onclick="addCart()">Ajouter</button>
+<button onclick="addCart('Secret')">Ajouter</button>
 </div>
 
 <div class="product">
 <img src="https://i.imgur.com/mX4p7bE.png">
 <h3>Parfum</h3>
-<button onclick="addCart()">Ajouter</button>
+<button onclick="addCart('Parfum')">Ajouter</button>
 </div>
 
+</div>
+
+<div class="checkout" onclick="orderWhatsApp()">
+Commander
 </div>
 
 <a class="whatsapp" href="https://wa.me/50935206180">💬</a>
 
 <script>
 
-let count = 0
+let cart = []
 
-function addCart(){
-count++
-document.getElementById("count").innerText = count
-alert("Produit ajouté au panier")
+function addCart(product){
+cart.push(product)
+document.getElementById("count").innerText = cart.length
+alert(product + " ajouté au panier")
+}
+
+function orderWhatsApp(){
+
+if(cart.length == 0){
+alert("Panier vide")
+return
+}
+
+let message = "Bonjour, mwen vle kòmande: " + cart.join(", ")
+
+let url = "https://wa.me/50935206180?text=" + encodeURIComponent(message)
+
+window.open(url)
+
 }
 
 </script>

@@ -1,167 +1,92 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>T.castore</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
 body{
-font-family:Arial;
-margin:0;
 background:black;
 color:white;
+font-family:Arial;
+margin:0;
 }
 
 header{
-text-align:center;
-padding:30px;
+background:black;
 color:gold;
+text-align:center;
+padding:25px;
 font-size:28px;
 }
 
 .container{
-padding:20px;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 .card{
 background:#111;
-padding:20px;
-border-radius:10px;
-text-align:center;
 border:2px solid gold;
+border-radius:10px;
+width:200px;
+margin:15px;
+padding:15px;
+text-align:center;
 }
 
 .card img{
-width:120px;
-margin-bottom:10px;
+width:150px;
 }
 
 button{
 background:gold;
 border:none;
-padding:10px 20px;
-border-radius:8px;
-font-weight:bold;
-cursor:pointer;
+padding:10px;
+border-radius:5px;
 }
-
-footer{
-text-align:center;
-padding:20px;
-color:gold;
-}
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-}
-
 </style>
-
 </head>
 
 <body>
 
 <header>
-T.castore
-<p>Beauté • Style • Élégance</p>
+T.castore  
+Cosmétiques - Parfums
 </header>
 
 <div class="container">
-
-<h2>Produits Cosmétiques</h2>
-
-<div class="products">
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Vaseline.jpg/320px-Vaseline.jpg">
-<h3>Vaseline</h3>
-<p>Soin pour la peau</p>
-<button>Commander</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Dove_soap.jpg/320px-Dove_soap.jpg">
-<h3>Dove</h3>
-<p>Savon corps</p>
-<button>Commander</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cerave_moisturizing_cream.jpg/320px-Cerave_moisturizing_cream.jpg">
-<h3>CeraVe</h3>
-<p>Crème hydratante</p>
-<button>Commander</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Deodorant.jpg/320px-Deodorant.jpg">
-<h3>Secret</h3>
-<p>Déodorant</p>
-<button>Commander</button>
-</div>
-
-</div>
-
-</div>
-
-<footer>
-
-<p>Adresse: Gonaïves - Ruelle Canneaux #11</p>
-<p>Paiement: Natcash</p>
-<p>Tel: +509 35206180</p>
-
-</footer>
-
-<a class="whatsapp" href="https://wa.me/50935206180">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="60">
-</a>
-
-</body>
-</html><h2>Cosmétiques</h2>
 
 <div class="card">
 <img src="vaseline.jpg">
 <h3>Vaseline</h3>
 <p>Soin de la peau</p>
+<button>Commander</button>
+</div>
+
+<div class="card">
+<img src="dove.jpg">
+<h3>Dove</h3>
+<p>Savon beauté</p>
+<button>Commander</button>
 </div>
 
 <div class="card">
 <img src="cerave.jpg">
 <h3>CeraVe</h3>
 <p>Crème hydratante</p>
+<button>Commander</button>
 </div>
 
 <div class="card">
-<img src="dove.jpg">
-<h3>Dove</h3>
-<p>Soin beauté</p>
-</div><h2>Shampoo</h2>
-
-<div class="card">
-<img src="240.jpeg">
-<h3>Suave Shampoo</h3>
-<p>Soin pour cheveux</p>
-</div><h2>Parfum</h2>
-
-<div class="card">
-<img src="images (3).jpeg">
-<h3>Parfum Femme</h3>
+<img src="parfum.jpg">
+<h3>Parfum</h3>
 <p>Parfum longue durée</p>
+<button>Commander</button>
 </div>
 
-<div class="card">
-<img src="KPS9S.png">
-<h3>Parfum Homme</h3>
-<p>Parfum élégant</p>
 </div>
+
+</body>
+</html>

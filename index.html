@@ -1,73 +1,31 @@
-<div class="header">
-
-<h2 style="margin:5px;color:white;">T.castore</h2>
-
-<div class="search">
-<input placeholder="Search produit...">
-</div>
-
-</div>
-<!DOCTYPE html><html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>T.castore</title><style>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>T.castore</title><style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#f2f2f2;
+background:#f5f5f5;
 }
 
-/* header */
-
 .header{
-background:#0a5bd3;
-padding:10px;
-color:white;
+background:black;
+color:gold;
+padding:15px;
+text-align:center;
 }
 
 .search{
-background:white;
 padding:10px;
+background:white;
+margin:10px;
 border-radius:30px;
-display:flex;
-align-items:center;
 }
 
 .search input{
+width:100%;
 border:none;
 outline:none;
-flex:1;
 font-size:16px;
 }
-
-/* categories */
-
-.categories{
-display:flex;
-overflow:auto;
-gap:10px;
-padding:10px;
-background:white;
-}
-
-.cat{
-background:#eee;
-padding:8px 15px;
-border-radius:20px;
-white-space:nowrap;
-}
-
-/* banner */
-
-.banner{
-background:#cde3a5;
-margin:10px;
-padding:20px;
-border-radius:10px;
-}
-
-/* products */
 
 .products{
 display:grid;
@@ -85,7 +43,7 @@ text-align:center;
 
 .product img{
 width:100%;
-height:120px;
+height:130px;
 object-fit:cover;
 }
 
@@ -98,19 +56,17 @@ button{
 background:black;
 color:gold;
 border:none;
-padding:8px;
+padding:10px;
+border-radius:6px;
 margin-top:5px;
-border-radius:5px;
 }
-
-/* cart */
 
 .cart{
 position:fixed;
-top:15px;
-right:15px;
+top:10px;
+right:10px;
 background:white;
-padding:8px 12px;
+padding:10px;
 border-radius:20px;
 font-weight:bold;
 }
@@ -119,13 +75,11 @@ font-weight:bold;
 display:none;
 position:fixed;
 bottom:0;
-background:white;
 width:100%;
+background:white;
 padding:20px;
 box-shadow:0 -3px 10px rgba(0,0,0,0.3);
 }
-
-/* whatsapp */
 
 .whatsapp{
 position:fixed;
@@ -136,16 +90,14 @@ color:white;
 padding:15px;
 border-radius:50%;
 text-decoration:none;
-font-size:20px;
 }
 
-</style></head><body><div class="header"><div class="search">
+</style></head><body><div class="header">
+<h2>T.castore</h2>
+<p>Cosmétiques & Parfum</p>
+</div><div class="search">
 <input placeholder="Search produit...">
-</div></div><div class="categories"><div class="cat">Cosmétiques</div>
-<div class="cat">Parfum</div>
-<div class="cat">Shampoo</div>
-<div class="cat">Crème</div></div><div class="banner"><h2>Trending produits</h2>
-<p>Bon prix sou cosmétiques</p></div><div class="products"><div class="product">
+</div><div class="products"><div class="product">
 <img src="vaseline.jpg">
 <h3>Vaseline</h3>
 <div class="price">$6</div>
@@ -176,7 +128,7 @@ font-size:20px;
 
 <br><br>
 
-<button onclick="order()">Commander WhatsApp</button>
+<button onclick="order()">Commander</button>
 
 </div><a class="whatsapp" href="https://wa.me/50935206180">💬</a>
 

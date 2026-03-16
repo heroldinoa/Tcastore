@@ -17,11 +17,12 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 font-size:20px;
+font-weight:bold;
 }
 
-.cartIcon{
-font-size:22px;
+.cart{
 cursor:pointer;
+font-size:22px;
 }
 
 .search{
@@ -65,50 +66,50 @@ border-radius:6px;
 margin-top:5px;
 }
 
-#cart{
+#cartBox{
 position:fixed;
 bottom:0;
-background:white;
 width:100%;
+background:white;
 padding:15px;
 display:none;
-box-shadow:0 -3px 10px rgba(0,0,0,0.2);
+box-shadow:0 -3px 10px rgba(0,0,0,0.3);
 max-height:350px;
 overflow:auto;
 }
 
 </style></head><body><div class="header"><span>T.castore</span>
 
-<span class="cartIcon" onclick="toggleCart()">
-🛒 <span id="cartCount">0</span>
+<span class="cart" onclick="toggleCart()">
+🛒 <span id="count">0</span>
 </span></div><div class="search">
 <input placeholder="Search produit...">
 </div><div class="products"><div class="product">
 <img src="https://via.placeholder.com/150">
 <h3>Dove</h3>
 <p>$5</p>
-<button onclick="addProduct('Dove',5)">Ajouter</button>
+<button onclick="add('Dove',5)">Ajouter</button>
 </div><div class="product">
 <img src="https://via.placeholder.com/150">
 <h3>Secret</h3>
 <p>$7</p>
-<button onclick="addProduct('Secret',7)">Ajouter</button>
+<button onclick="add('Secret',7)">Ajouter</button>
 </div><div class="product">
 <img src="https://via.placeholder.com/150">
 <h3>Parfum</h3>
 <p>$15</p>
-<button onclick="addProduct('Parfum',15)">Ajouter</button>
+<button onclick="add('Parfum',15)">Ajouter</button>
 </div><div class="product">
 <img src="https://via.placeholder.com/150">
 <h3>Vaseline</h3>
 <p>$6</p>
-<button onclick="addProduct('Vaseline',6)">Ajouter</button>
+<button onclick="add('Vaseline',6)">Ajouter</button>
 </div><div class="product">
 <img src="https://via.placeholder.com/150">
 <h3>CeraVe</h3>
 <p>$12</p>
-<button onclick="addProduct('CeraVe',12)">Ajouter</button>
-</div></div><div id="cart"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><p>🚚 Livraison gratis</p><button onclick="natcash()">Peye Natcash</button>
+<button onclick="add('CeraVe',12)">Ajouter</button>
+</div></div><div id="cartBox"><h3>Panier</h3><ul id="items"></ul><p>Total: $<span id="total">0</span></p><p>🚚 Livraison gratis</p><button onclick="natcash()">Peye Natcash</button>
 
 <button onclick="moncash()">Peye Moncash</button>
 
@@ -117,19 +118,19 @@ overflow:auto;
 let cart=[]
 let total=0
 
-function addProduct(name,price){
+function add(name,price){
 
 cart.push({name:name,price:price})
 
 total += price
 
-updateCart()
+update()
 
 }
 
-function updateCart(){
+function update(){
 
-let list=document.getElementById("cartItems")
+let list=document.getElementById("items")
 
 list.innerHTML=""
 
@@ -143,7 +144,7 @@ list.innerHTML +=
 
 document.getElementById("total").innerText=total
 
-document.getElementById("cartCount").innerText=cart.length
+document.getElementById("count").innerText=cart.length
 
 }
 
@@ -153,18 +154,18 @@ total -= cart[index].price
 
 cart.splice(index,1)
 
-updateCart()
+update()
 
 }
 
 function toggleCart(){
 
-let cartBox=document.getElementById("cart")
+let box=document.getElementById("cartBox")
 
-if(cartBox.style.display=="block"){
-cartBox.style.display="none"
+if(box.style.display=="block"){
+box.style.display="none"
 }else{
-cartBox.style.display="block"
+box.style.display="block"
 }
 
 }
@@ -181,4 +182,5 @@ alert("Voye MonCash sou: 35206180")
 
 }
 
-</script></body></html>
+</script></body>
+</html>

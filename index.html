@@ -13,14 +13,20 @@ background:#f5f5f5;
 background:#0071ce;
 color:white;
 padding:15px;
-text-align:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:20px;
+}
+
+.cartIcon{
 font-size:22px;
-font-weight:bold;
+cursor:pointer;
 }
 
 .search{
-padding:10px;
 background:#0071ce;
+padding:10px;
 }
 
 .search input{
@@ -60,29 +66,22 @@ margin-top:5px;
 }
 
 #cart{
-background:white;
-padding:15px;
 position:fixed;
-bottom:60px;
+bottom:0;
+background:white;
 width:100%;
+padding:15px;
 display:none;
-box-shadow:0 -2px 10px rgba(0,0,0,0.2);
-max-height:300px;
+box-shadow:0 -3px 10px rgba(0,0,0,0.2);
+max-height:350px;
 overflow:auto;
 }
 
-.footer{
-position:fixed;
-bottom:0;
-width:100%;
-background:white;
-display:flex;
-justify-content:space-around;
-padding:10px;
-border-top:1px solid #ccc;
-}
+</style></head><body><div class="header"><span>T.castore</span>
 
-</style></head><body><div class="header">T.castore</div><div class="search">
+<span class="cartIcon" onclick="toggleCart()">
+🛒 <span id="cartCount">0</span>
+</span></div><div class="search">
 <input placeholder="Search produit...">
 </div><div class="products"><div class="product">
 <img src="https://via.placeholder.com/150">
@@ -112,12 +111,6 @@ border-top:1px solid #ccc;
 </div></div><div id="cart"><h3>Panier</h3><ul id="cartItems"></ul><p>Total: $<span id="total">0</span></p><p>🚚 Livraison gratis</p><button onclick="natcash()">Peye Natcash</button>
 
 <button onclick="moncash()">Peye Moncash</button>
-
-</div><div class="footer"><button onclick="home()">🏠 Home</button>
-
-<button onclick="toggleCart()">🛒 Cart</button>
-
-<button onclick="account()">👤 Account</button>
 
 </div><script>
 
@@ -150,6 +143,8 @@ list.innerHTML +=
 
 document.getElementById("total").innerText=total
 
+document.getElementById("cartCount").innerText=cart.length
+
 }
 
 function remove(index){
@@ -174,18 +169,6 @@ cartBox.style.display="block"
 
 }
 
-function home(){
-
-document.getElementById("cart").style.display="none"
-
-}
-
-function account(){
-
-alert("Création compte bientôt disponible")
-
-}
-
 function natcash(){
 
 alert("Voye lajan sou Natcash: 35206180")
@@ -199,4 +182,3 @@ alert("Voye MonCash sou: 35206180")
 }
 
 </script></body></html>
-

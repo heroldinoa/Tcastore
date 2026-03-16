@@ -1,4 +1,5 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html><html>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>T.castore</title><style>
 
@@ -48,8 +49,6 @@ text-align:center;
 width:100%;
 height:130px;
 object-fit:cover;
-border-radius:8px;
-cursor:pointer;
 }
 
 .price{
@@ -71,8 +70,19 @@ position:fixed;
 top:15px;
 right:15px;
 background:white;
-padding:8px 12px;
+padding:10px;
 border-radius:20px;
+font-weight:bold;
+}
+
+.command{
+position:fixed;
+bottom:80px;
+right:20px;
+background:black;
+color:gold;
+padding:12px;
+border-radius:10px;
 }
 
 .whatsapp{
@@ -91,57 +101,60 @@ T.castore
 </div><div class="search">
 <input placeholder="Search produit...">
 </div><div class="products"><div class="product">
-<img id="img1" src="https://via.placeholder.com/150" onclick="uploadImage('img1')">
+<img src="https://i.imgur.com/0y0y0y0.png">
 <h3>Vaseline</h3>
 <div class="price">$6</div>
-<button>Ajouter</button>
+<button onclick="add('Vaseline',6)">Ajouter</button>
 </div><div class="product">
-<img id="img2" src="https://via.placeholder.com/150" onclick="uploadImage('img2')">
+<img src="https://i.imgur.com/0y0y0y0.png">
 <h3>Dove</h3>
 <div class="price">$5</div>
-<button>Ajouter</button>
+<button onclick="add('Dove',5)">Ajouter</button>
 </div><div class="product">
-<img id="img3" src="https://via.placeholder.com/150" onclick="uploadImage('img3')">
+<img src="https://i.imgur.com/0y0y0y0.png">
 <h3>CeraVe</h3>
 <div class="price">$12</div>
-<button>Ajouter</button>
+<button onclick="add('CeraVe',12)">Ajouter</button>
 </div><div class="product">
-<img id="img4" src="https://via.placeholder.com/150" onclick="uploadImage('img4')">
+<img src="https://i.imgur.com/0y0y0y0.png">
 <h3>Secret</h3>
 <div class="price">$7</div>
-<button>Ajouter</button>
-</div><div class="product">
-<img id="img5" src="https://via.placeholder.com/150" onclick="uploadImage('img5')">
-<h3>Parfum</h3>
-<div class="price">$20</div>
-<button>Ajouter</button>
+<button onclick="add('Secret',7)">Ajouter</button>
 </div></div><div class="cart">
-🛒 0
-</div><a class="whatsapp" href="https://wa.me/50935206180">💬</a>
+🛒 <span id="count">0</span>
+</div><button class="command" onclick="order()">Commander</button>
 
-<input type="file" id="fileInput" style="display:none"><script>
+<a class="whatsapp" href="https://wa.me/50935206180">💬</a>
 
-function uploadImage(id){
+<script>
 
-let input=document.getElementById("fileInput")
+let cart=[]
+let total=0
 
-input.onchange=function(e){
+function add(name,price){
 
-let file=e.target.files[0]
+cart.push(name)
+total+=price
 
-let reader=new FileReader()
-
-reader.onload=function(){
-
-document.getElementById(id).src=reader.result
+document.getElementById("count").innerText=cart.length
 
 }
 
-reader.readAsDataURL(file)
+function order(){
+
+if(cart.length==0){
+
+alert("Panier vide")
+
+return
 
 }
 
-input.click()
+let message="Bonjour mwen vle kòmande: "+cart.join(", ")
+
+let url="https://wa.me/50935206180?text="+encodeURIComponent(message)
+
+window.open(url)
 
 }
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>T.castore</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,13 +8,13 @@
 <style>
 
 body{
-font-family:Arial;
+font-family: Arial;
 margin:0;
 background:#f2f2f2;
 }
 
 header{
-background:#1976d2;
+background:#0071ce;
 color:white;
 padding:15px;
 display:flex;
@@ -23,72 +22,68 @@ justify-content:space-between;
 align-items:center;
 }
 
-.logo{
-font-size:22px;
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
 font-weight:bold;
 }
 
-nav a{
-color:white;
-margin-left:15px;
-text-decoration:none;
-font-weight:bold;
-cursor:pointer;
+.search{
+width:90%;
+padding:10px;
+margin:10px;
+border-radius:8px;
+border:none;
 }
 
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
-padding:15px;
+padding:10px;
 }
 
-.product{
+.card{
 background:white;
 padding:10px;
 border-radius:10px;
 text-align:center;
 }
 
-.product img{
+.card img{
 width:100%;
-height:140px;
-object-fit:cover;
-border-radius:8px;
+border-radius:10px;
 }
 
 button{
-border:none;
-padding:10px;
-border-radius:8px;
 width:100%;
-margin-top:8px;
+padding:10px;
+margin-top:5px;
+border:none;
+border-radius:8px;
 font-weight:bold;
 }
 
 .add{
-background:#1976d2;
+background:#0071ce;
 color:white;
 }
 
 .order{
-background:#25D366;
+background:#2ecc71;
 color:white;
 }
 
-.page{
+.cartBox{
+position:fixed;
+top:60px;
+right:10px;
+background:white;
+padding:10px;
+border-radius:10px;
+width:200px;
 display:none;
-}
-
-.active{
-display:block;
-}
-
-footer{
-background:#111;
-color:white;
-text-align:center;
-padding:20px;
 }
 
 .whatsapp{
@@ -98,9 +93,8 @@ right:20px;
 background:#25D366;
 color:white;
 padding:15px;
-border-radius:30px;
+border-radius:50px;
 text-decoration:none;
-font-weight:bold;
 }
 
 </style>
@@ -111,193 +105,104 @@ font-weight:bold;
 
 <header>
 
-<div class="logo">T.castore</div>
+<h2>T.castore</h2>
 
 <nav>
-
-<a onclick="showPage('home')">Home</a>
-<a onclick="showPage('login')">Login</a>
-<a onclick="showPage('register')">Register</a>
-<a onclick="showPage('cartPage')">🛒 <span id="cartCount">0</span></a>
-
+<a href="#">Home</a>
+<a href="#">Login</a>
+<a href="#">Register</a>
+<a href="#" onclick="toggleCart()">🛒 <span id="count">0</span></a>
 </nav>
 
 </header>
 
-
-<div id="home" class="page active">
+<input class="search" placeholder="Recherche produit...">
 
 <div class="products">
 
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
-
+<div class="card">
+<img src="https://i.imgur.com/7yUvePI.png">
 <h3>Dove</h3>
-
 <p>$5</p>
-
-<button class="add" onclick="addCart()">Ajouter</button>
-
-<a href="https://wa.me/50935206180?text=Bonjou%20mwen%20vle%20kòmande%20Dove" target="_blank">
-
+<button class="add" onclick="addItem('Dove')">Ajouter</button>
 <button class="order">Commander</button>
-
-</a>
-
 </div>
 
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">
-
+<div class="card">
+<img src="https://i.imgur.com/6qK9XbT.png">
 <h3>Secret</h3>
-
 <p>$7</p>
-
-<button class="add" onclick="addCart()">Ajouter</button>
-
-<a href="https://wa.me/50935206180?text=Bonjou%20mwen%20vle%20kòmande%20Secret" target="_blank">
-
+<button class="add" onclick="addItem('Secret')">Ajouter</button>
 <button class="order">Commander</button>
-
-</a>
-
 </div>
 
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b">
-
+<div class="card">
+<img src="https://i.imgur.com/1H9Z1ZK.png">
 <h3>Vaseline</h3>
-
-<p>$6</p>
-
-<button class="add" onclick="addCart()">Ajouter</button>
-
-<a href="https://wa.me/50935206180?text=Bonjou%20mwen%20vle%20kòmande%20Vaseline" target="_blank">
-
+<p>$4</p>
+<button class="add" onclick="addItem('Vaseline')">Ajouter</button>
 <button class="order">Commander</button>
-
-</a>
-
 </div>
 
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
-
+<div class="card">
+<img src="https://i.imgur.com/4YQZ4sO.png">
 <h3>Cerave</h3>
-
-<p>$12</p>
-
-<button class="add" onclick="addCart()">Ajouter</button>
-
-<a href="https://wa.me/50935206180?text=Bonjou%20mwen%20vle%20kòmande%20Cerave" target="_blank">
-
+<p>$10</p>
+<button class="add" onclick="addItem('Cerave')">Ajouter</button>
 <button class="order">Commander</button>
-
-</a>
-
 </div>
 
 </div>
 
-</div>
+<div class="cartBox" id="cart">
+<h4>Panier</h4>
+<ul id="list"></ul>
 
+<p>Livraison: Gratuit</p>
 
-<div id="login" class="page">
-
-<div style="padding:20px">
-
-<h2>Login</h2>
-
-<input placeholder="Email" style="width:100%;padding:10px;margin:10px 0">
-
-<input placeholder="Password" style="width:100%;padding:10px;margin:10px 0">
-
-<button class="add">Login</button>
+<button onclick="pay('Moncash')">Payer Moncash</button>
+<button onclick="pay('Natcash')">Payer Natcash</button>
 
 </div>
 
-</div>
-
-
-<div id="register" class="page">
-
-<div style="padding:20px">
-
-<h2>Create Account</h2>
-
-<input placeholder="Name" style="width:100%;padding:10px;margin:10px 0">
-
-<input placeholder="Email" style="width:100%;padding:10px;margin:10px 0">
-
-<input placeholder="Password" style="width:100%;padding:10px;margin:10px 0">
-
-<button class="add">Register</button>
-
-</div>
-
-</div>
-
-
-<div id="cartPage" class="page">
-
-<div style="padding:20px">
-
-<h2>Your Cart</h2>
-
-<p>Produit nan panye ou.</p>
-
-<p>🚚 Livrezon gratis</p>
-
-</div>
-
-</div>
-
-
-<footer>
-
-<h3>T.castore</h3>
-
-<p>📞 Tel: +509 35206180</p>
-
-<p>Commande WhatsApp disponib</p>
-
-<p>©2026</p>
-
-</footer>
-
-
-<a class="whatsapp" href="https://wa.me/50935206180" target="_blank">
-
-WhatsApp
-
-</a>
-
+<a class="whatsapp" href="https://wa.me/50935206180">WhatsApp</a>
 
 <script>
 
-let cart=0
+let cart=[]
 
-function addCart(){
+function addItem(name){
+cart.push(name)
+document.getElementById("count").innerText=cart.length
 
-cart++
+let li=document.createElement("li")
+li.innerText=name
 
-document.getElementById("cartCount").innerText=cart
-
+let btn=document.createElement("button")
+btn.innerText="X"
+btn.onclick=function(){
+li.remove()
+cart.pop()
+document.getElementById("count").innerText=cart.length
 }
 
-function showPage(page){
+li.appendChild(btn)
 
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById("list").appendChild(li)
+}
 
-document.getElementById(page).classList.add("active")
+function toggleCart(){
+let box=document.getElementById("cart")
 
+if(box.style.display=="block"){
+box.style.display="none"
+}else{
+box.style.display="block"
+}
+}
+
+function pay(type){
+alert("Payer avec "+type)
 }
 
 </script>

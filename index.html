@@ -11,7 +11,7 @@
 body{
 font-family:Arial;
 margin:0;
-background:#f2f2f2;
+background:#f1f3f6;
 }
 
 header{
@@ -34,18 +34,6 @@ margin-left:15px;
 text-decoration:none;
 font-weight:bold;
 cursor:pointer;
-}
-
-.search{
-padding:15px;
-background:white;
-}
-
-.search input{
-width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #ccc;
 }
 
 .products{
@@ -87,21 +75,23 @@ display:none;
 display:block;
 }
 
-.cartItem{
-background:white;
-margin:10px;
-padding:10px;
-border-radius:8px;
-display:flex;
-justify-content:space-between;
-}
-
 footer{
 background:#111;
 color:white;
 text-align:center;
 padding:20px;
-margin-top:30px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
 }
 
 </style>
@@ -128,25 +118,17 @@ margin-top:30px;
 
 <div id="home" class="page active">
 
-<div class="search">
-
-<input id="searchInput" onkeyup="searchProduct()" placeholder="Search produit...">
-
-</div>
-
-<div class="products" id="productList">
+<div class="products">
 
 <div class="product">
 
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
 
-<h3>Dove Soap</h3>
-
-<p>Hydrating beauty bar</p>
+<h3>Dove</h3>
 
 <p>$5</p>
 
-<button onclick="addCart('Dove',5)">Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
@@ -155,13 +137,11 @@ margin-top:30px;
 
 <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">
 
-<h3>Secret Deodorant</h3>
-
-<p>Long lasting protection</p>
+<h3>Secret</h3>
 
 <p>$7</p>
 
-<button onclick="addCart('Secret',7)">Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
@@ -172,11 +152,9 @@ margin-top:30px;
 
 <h3>Vaseline</h3>
 
-<p>Skin healing jelly</p>
-
 <p>$6</p>
 
-<button onclick="addCart('Vaseline',6)">Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
@@ -185,13 +163,11 @@ margin-top:30px;
 
 <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
 
-<h3>Cerave Cleanser</h3>
-
-<p>Hydrating facial cleanser</p>
+<h3>Cerave</h3>
 
 <p>$12</p>
 
-<button onclick="addCart('Cerave',12)">Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
@@ -238,25 +214,13 @@ margin-top:30px;
 
 <div id="cartPage" class="page">
 
-<h2 style="padding-left:15px">Cart</h2>
+<div style="padding:20px">
 
-<div id="cartItems"></div>
+<h2>Your Cart</h2>
 
-<div style="padding:15px">
-
-<h3>Checkout</h3>
-
-<input placeholder="Name" style="width:100%;padding:10px;margin:5px 0">
-
-<input placeholder="Phone" style="width:100%;padding:10px;margin:5px 0">
-
-<input placeholder="Address" style="width:100%;padding:10px;margin:5px 0">
+<p>Produit nan panye ou.</p>
 
 <p>🚚 Livrezon gratis</p>
-
-<button onclick="alert('Peman MonCash')">Peye ak MonCash</button>
-
-<button onclick="alert('Peman NatCash')">Peye ak NatCash</button>
 
 </div>
 
@@ -267,65 +231,31 @@ margin-top:30px;
 
 <h3>T.castore</h3>
 
-<p>Livrezon gratis</p>
+<p>📞 Tel: +509 3456 7890</p>
 
-<p>Contact: +509</p>
+<p>Commande WhatsApp disponib</p>
 
-<p>©2026 T.castore</p>
+<p>©2026</p>
 
 </footer>
 
 
+<a class="whatsapp" href="https://wa.me/50934567890" target="_blank">
+
+WhatsApp
+
+</a>
+
+
 <script>
 
-let cart=[]
-let count=0
+let cart=0
 
-function addCart(name,price){
+function addCart(){
 
-cart.push({name,price})
+cart++
 
-count++
-
-document.getElementById("cartCount").innerText=count
-
-renderCart()
-
-}
-
-function removeItem(i){
-
-cart.splice(i,1)
-
-count--
-
-document.getElementById("cartCount").innerText=count
-
-renderCart()
-
-}
-
-function renderCart(){
-
-let container=document.getElementById("cartItems")
-
-container.innerHTML=""
-
-cart.forEach((item,i)=>{
-
-container.innerHTML+=`
-
-<div class="cartItem">
-
-${item.name} - $${item.price}
-
-<button onclick="removeItem(${i})">Retire</button>
-
-</div>
-
-`
-
-})
+document.getElementById("cartCount").innerText=cart
 
 }
 
@@ -337,23 +267,8 @@ document.getElementById(page).classList.add("active")
 
 }
 
-function searchProduct(){
-
-let input=document.getElementById("searchInput").value.toLowerCase()
-
-let products=document.querySelectorAll(".product")
-
-products.forEach(p=>{
-
-let text=p.innerText.toLowerCase()
-
-p.style.display=text.includes(input)?"block":"none"
-
-})
-
-}
-
 </script>
+
 
 </body>
 </html>

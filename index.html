@@ -36,6 +36,18 @@ font-weight:bold;
 cursor:pointer;
 }
 
+.search{
+padding:15px;
+background:white;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -84,6 +96,14 @@ display:flex;
 justify-content:space-between;
 }
 
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+
 </style>
 
 </head>
@@ -108,13 +128,21 @@ justify-content:space-between;
 
 <div id="home" class="page active">
 
-<div class="products">
+<div class="search">
+
+<input id="searchInput" onkeyup="searchProduct()" placeholder="Search produit...">
+
+</div>
+
+<div class="products" id="productList">
 
 <div class="product">
 
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
 
-<h3>Dove</h3>
+<h3>Dove Soap</h3>
+
+<p>Hydrating beauty bar</p>
 
 <p>$5</p>
 
@@ -127,7 +155,9 @@ justify-content:space-between;
 
 <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">
 
-<h3>Secret</h3>
+<h3>Secret Deodorant</h3>
+
+<p>Long lasting protection</p>
 
 <p>$7</p>
 
@@ -142,6 +172,8 @@ justify-content:space-between;
 
 <h3>Vaseline</h3>
 
+<p>Skin healing jelly</p>
+
 <p>$6</p>
 
 <button onclick="addCart('Vaseline',6)">Ajouter</button>
@@ -153,7 +185,9 @@ justify-content:space-between;
 
 <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
 
-<h3>Cerave</h3>
+<h3>Cerave Cleanser</h3>
+
+<p>Hydrating facial cleanser</p>
 
 <p>$12</p>
 
@@ -208,7 +242,38 @@ justify-content:space-between;
 
 <div id="cartItems"></div>
 
+<div style="padding:15px">
+
+<h3>Checkout</h3>
+
+<input placeholder="Name" style="width:100%;padding:10px;margin:5px 0">
+
+<input placeholder="Phone" style="width:100%;padding:10px;margin:5px 0">
+
+<input placeholder="Address" style="width:100%;padding:10px;margin:5px 0">
+
+<p>🚚 Livrezon gratis</p>
+
+<button onclick="alert('Peman MonCash')">Peye ak MonCash</button>
+
+<button onclick="alert('Peman NatCash')">Peye ak NatCash</button>
+
 </div>
+
+</div>
+
+
+<footer>
+
+<h3>T.castore</h3>
+
+<p>Livrezon gratis</p>
+
+<p>Contact: +509</p>
+
+<p>©2026 T.castore</p>
+
+</footer>
 
 
 <script>
@@ -269,6 +334,22 @@ function showPage(page){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
 
 document.getElementById(page).classList.add("active")
+
+}
+
+function searchProduct(){
+
+let input=document.getElementById("searchInput").value.toLowerCase()
+
+let products=document.querySelectorAll(".product")
+
+products.forEach(p=>{
+
+let text=p.innerText.toLowerCase()
+
+p.style.display=text.includes(input)?"block":"none"
+
+})
 
 }
 

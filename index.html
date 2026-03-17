@@ -4,7 +4,7 @@
 
 <title>T.castore</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
@@ -19,8 +19,13 @@ background:#1976d2;
 color:white;
 padding:15px;
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
 }
 
 nav a{
@@ -28,6 +33,7 @@ color:white;
 margin-left:15px;
 text-decoration:none;
 font-weight:bold;
+cursor:pointer;
 }
 
 .search{
@@ -38,21 +44,21 @@ background:white;
 .search input{
 width:100%;
 padding:12px;
-border-radius:6px;
+border-radius:8px;
 border:1px solid #ccc;
 }
 
 .products{
 display:grid;
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:1fr 1fr;
 gap:15px;
 padding:15px;
 }
 
 .product{
 background:white;
-padding:12px;
 border-radius:10px;
+padding:10px;
 text-align:center;
 }
 
@@ -68,9 +74,16 @@ background:#1976d2;
 color:white;
 border:none;
 padding:10px;
-border-radius:6px;
+border-radius:8px;
 width:100%;
-margin-top:8px;
+}
+
+.page{
+display:none;
+}
+
+.active{
+display:block;
 }
 
 </style>
@@ -81,79 +94,155 @@ margin-top:8px;
 
 <header>
 
-<h2>T.castore</h2>
+<div class="logo">T.castore</div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Login</a>
-<a href="#">Register</a>
-<a href="#">🛒0</a>
+
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('login')">Login</a>
+<a onclick="showPage('register')">Register</a>
+<a onclick="showPage('cart')">🛒 <span id="cart">0</span></a>
+
 </nav>
 
 </header>
 
 
+<div id="home" class="page active">
+
 <div class="search">
-
 <input placeholder="Search produit...">
-
 </div>
-
 
 <div class="products">
 
 <div class="product">
 
-<img src="https://i.imgur.com/Wp9kK7K.jpg">
+<img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
 
 <h3>Dove</h3>
 
 <p>$5</p>
 
-<button>Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
 
 <div class="product">
 
-<img src="https://i.imgur.com/5n6XK7E.jpg">
+<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">
 
 <h3>Secret</h3>
 
 <p>$7</p>
 
-<button>Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
 
 <div class="product">
 
-<img src="https://i.imgur.com/5ZC8B6R.jpg">
+<img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b">
 
 <h3>Vaseline</h3>
 
 <p>$6</p>
 
-<button>Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
 
 <div class="product">
 
-<img src="https://i.imgur.com/Tj8Kp9T.jpg">
+<img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
 
 <h3>Cerave</h3>
 
 <p>$12</p>
 
-<button>Ajouter</button>
+<button onclick="addCart()">Ajouter</button>
 
 </div>
 
 </div>
+
+</div>
+
+
+<div id="login" class="page">
+
+<div style="padding:20px">
+
+<h2>Login</h2>
+
+<input placeholder="Email" style="width:100%;padding:10px;margin:10px 0">
+
+<input placeholder="Password" style="width:100%;padding:10px;margin:10px 0">
+
+<button>Login</button>
+
+</div>
+
+</div>
+
+
+<div id="register" class="page">
+
+<div style="padding:20px">
+
+<h2>Create Account</h2>
+
+<input placeholder="Name" style="width:100%;padding:10px;margin:10px 0">
+
+<input placeholder="Email" style="width:100%;padding:10px;margin:10px 0">
+
+<input placeholder="Password" style="width:100%;padding:10px;margin:10px 0">
+
+<button>Register</button>
+
+</div>
+
+</div>
+
+
+<div id="cart" class="page">
+
+<div style="padding:20px">
+
+<h2>Your Cart</h2>
+
+<p>Produit nan panye ou.</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+let cart=0
+
+function addCart(){
+
+cart++
+
+document.getElementById("cart").innerText=cart
+
+}
+
+function showPage(page){
+
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+
+document.getElementById(page).classList.add("active")
+
+}
+
+</script>
+
 
 </body>
 </html>

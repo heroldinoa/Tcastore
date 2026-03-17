@@ -19,8 +19,8 @@ background:#1976d2;
 color:white;
 padding:15px;
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
 }
 
 .logo{
@@ -76,6 +76,7 @@ border:none;
 padding:10px;
 border-radius:8px;
 width:100%;
+margin-top:8px;
 }
 
 .page{
@@ -84,6 +85,16 @@ display:none;
 
 .active{
 display:block;
+}
+
+.cartItem{
+background:white;
+margin:10px;
+padding:10px;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 </style>
@@ -101,12 +112,11 @@ display:block;
 <a onclick="showPage('home')">Home</a>
 <a onclick="showPage('login')">Login</a>
 <a onclick="showPage('register')">Register</a>
-<a onclick="showPage('cart')">🛒 <span id="cart">0</span></a>
+<a onclick="showPage('cartPage')">🛒 <span id="cartCount">0</span></a>
 
 </nav>
 
 </header>
-
 
 <div id="home" class="page active">
 
@@ -117,60 +127,36 @@ display:block;
 <div class="products">
 
 <div class="product">
-
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
-
 <h3>Dove</h3>
-
 <p>$5</p>
-
-<button onclick="addCart()">Ajouter</button>
-
+<button onclick="addCart('Dove',5)">Ajouter</button>
 </div>
 
-
 <div class="product">
-
 <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">
-
 <h3>Secret</h3>
-
 <p>$7</p>
-
-<button onclick="addCart()">Ajouter</button>
-
+<button onclick="addCart('Secret',7)">Ajouter</button>
 </div>
 
-
 <div class="product">
-
 <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b">
-
 <h3>Vaseline</h3>
-
 <p>$6</p>
-
-<button onclick="addCart()">Ajouter</button>
-
+<button onclick="addCart('Vaseline',6)">Ajouter</button>
 </div>
-
 
 <div class="product">
-
 <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
-
 <h3>Cerave</h3>
-
 <p>$12</p>
-
-<button onclick="addCart()">Ajouter</button>
-
+<button onclick="addCart('Cerave',12)">Ajouter</button>
 </div>
 
 </div>
 
 </div>
-
 
 <div id="login" class="page">
 
@@ -187,7 +173,6 @@ display:block;
 </div>
 
 </div>
-
 
 <div id="register" class="page">
 
@@ -207,29 +192,74 @@ display:block;
 
 </div>
 
+<div id="cartPage" class="page">
 
-<div id="cart" class="page">
+<h2 style="padding-left:15px">Your Cart</h2>
 
-<div style="padding:20px">
+<div id="cartItems"></div>
 
-<h2>Your Cart</h2>
+<h3 style="padding-left:15px">Livrezon gratis</h3>
 
-<p>Produit nan panye ou.</p>
+<div style="padding:15px">
+
+<button onclick="alert('Peye ak MonCash')">Peye ak MonCash</button>
+
+<button onclick="alert('Peye ak NatCash')">Peye ak NatCash</button>
 
 </div>
 
 </div>
-
 
 <script>
 
-let cart=0
+let cart=[]
+let count=0
 
-function addCart(){
+function addCart(name,price){
 
-cart++
+cart.push({name,price})
 
-document.getElementById("cart").innerText=cart
+count++
+
+document.getElementById("cartCount").innerText=count
+
+renderCart()
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1)
+
+count--
+
+document.getElementById("cartCount").innerText=count
+
+renderCart()
+
+}
+
+function renderCart(){
+
+let container=document.getElementById("cartItems")
+
+container.innerHTML=""
+
+cart.forEach((item,i)=>{
+
+container.innerHTML+=`
+
+<div class="cartItem">
+
+${item.name} - $${item.price}
+
+<button onclick="removeItem(${i})">Retire</button>
+
+</div>
+
+`
+
+})
 
 }
 
@@ -242,7 +272,6 @@ document.getElementById(page).classList.add("active")
 }
 
 </script>
-
 
 </body>
 </html>

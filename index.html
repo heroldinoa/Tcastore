@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>T.castore</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T.castore</title>
 
 <style>
 
 body{
-font-family: Arial;
 margin:0;
+font-family:Arial;
 background:#f2f2f2;
 }
 
 header{
 background:#0071ce;
 color:white;
-padding:15px;
+padding:10px;
+}
+
+.top{
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -29,19 +31,16 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.search{
-width:90%;
-padding:10px;
-margin:10px;
-border-radius:8px;
-border:none;
+.info{
+font-size:14px;
+margin-top:5px;
 }
 
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
-padding:10px;
+padding:15px;
 }
 
 .card{
@@ -77,13 +76,14 @@ color:white;
 
 .cartBox{
 position:fixed;
-top:60px;
+top:70px;
 right:10px;
 background:white;
 padding:10px;
 border-radius:10px;
 width:200px;
 display:none;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
 .whatsapp{
@@ -95,6 +95,7 @@ color:white;
 padding:15px;
 border-radius:50px;
 text-decoration:none;
+font-weight:bold;
 }
 
 </style>
@@ -105,6 +106,7 @@ text-decoration:none;
 
 <header>
 
+<div class="top">
 <h2>T.castore</h2>
 
 <nav>
@@ -113,10 +115,13 @@ text-decoration:none;
 <a href="#">Register</a>
 <a href="#" onclick="toggleCart()">🛒 <span id="count">0</span></a>
 </nav>
+</div>
+
+<div class="info">
+📞 Téléphone: 35206180 | 🚚 Livraison gratuite
+</div>
 
 </header>
-
-<input class="search" placeholder="Recherche produit...">
 
 <div class="products">
 
@@ -157,12 +162,7 @@ text-decoration:none;
 <div class="cartBox" id="cart">
 <h4>Panier</h4>
 <ul id="list"></ul>
-
-<p>Livraison: Gratuit</p>
-
-<button onclick="pay('Moncash')">Payer Moncash</button>
-<button onclick="pay('Natcash')">Payer Natcash</button>
-
+<p>🚚 Livraison gratuite</p>
 </div>
 
 <a class="whatsapp" href="https://wa.me/50935206180">WhatsApp</a>
@@ -172,14 +172,19 @@ text-decoration:none;
 let cart=[]
 
 function addItem(name){
+
 cart.push(name)
+
 document.getElementById("count").innerText=cart.length
 
 let li=document.createElement("li")
+
 li.innerText=name
 
 let btn=document.createElement("button")
+
 btn.innerText="X"
+
 btn.onclick=function(){
 li.remove()
 cart.pop()
@@ -189,9 +194,11 @@ document.getElementById("count").innerText=cart.length
 li.appendChild(btn)
 
 document.getElementById("list").appendChild(li)
+
 }
 
 function toggleCart(){
+
 let box=document.getElementById("cart")
 
 if(box.style.display=="block"){
@@ -199,10 +206,7 @@ box.style.display="none"
 }else{
 box.style.display="block"
 }
-}
 
-function pay(type){
-alert("Payer avec "+type)
 }
 
 </script>

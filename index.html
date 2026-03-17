@@ -36,18 +36,6 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.search{
-padding:15px;
-background:white;
-}
-
-.search input{
-width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -57,8 +45,8 @@ padding:15px;
 
 .product{
 background:white;
-border-radius:10px;
 padding:10px;
+border-radius:10px;
 text-align:center;
 }
 
@@ -94,7 +82,6 @@ padding:10px;
 border-radius:8px;
 display:flex;
 justify-content:space-between;
-align-items:center;
 }
 
 </style>
@@ -118,45 +105,66 @@ align-items:center;
 
 </header>
 
-<div id="home" class="page active">
 
-<div class="search">
-<input placeholder="Search produit...">
-</div>
+<div id="home" class="page active">
 
 <div class="products">
 
 <div class="product">
+
 <img src="https://images.unsplash.com/photo-1585386959984-a41552231658">
+
 <h3>Dove</h3>
+
 <p>$5</p>
+
 <button onclick="addCart('Dove',5)">Ajouter</button>
+
 </div>
 
+
 <div class="product">
+
 <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd">
+
 <h3>Secret</h3>
+
 <p>$7</p>
+
 <button onclick="addCart('Secret',7)">Ajouter</button>
+
 </div>
 
+
 <div class="product">
+
 <img src="https://images.unsplash.com/photo-1584464491033-06628f3a6b7b">
+
 <h3>Vaseline</h3>
+
 <p>$6</p>
+
 <button onclick="addCart('Vaseline',6)">Ajouter</button>
+
 </div>
+
 
 <div class="product">
+
 <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc">
+
 <h3>Cerave</h3>
+
 <p>$12</p>
+
 <button onclick="addCart('Cerave',12)">Ajouter</button>
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 
 <div id="login" class="page">
 
@@ -173,6 +181,7 @@ align-items:center;
 </div>
 
 </div>
+
 
 <div id="register" class="page">
 
@@ -192,23 +201,15 @@ align-items:center;
 
 </div>
 
+
 <div id="cartPage" class="page">
 
-<h2 style="padding-left:15px">Your Cart</h2>
+<h2 style="padding-left:15px">Cart</h2>
 
 <div id="cartItems"></div>
 
-<h3 style="padding-left:15px">Livrezon gratis</h3>
-
-<div style="padding:15px">
-
-<button onclick="alert('Peye ak MonCash')">Peye ak MonCash</button>
-
-<button onclick="alert('Peye ak NatCash')">Peye ak NatCash</button>
-
 </div>
 
-</div>
 
 <script>
 
@@ -227,9 +228,9 @@ renderCart()
 
 }
 
-function removeItem(index){
+function removeItem(i){
 
-cart.splice(index,1)
+cart.splice(i,1)
 
 count--
 

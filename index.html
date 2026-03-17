@@ -7,18 +7,15 @@
 <style>
 
 body{
-margin:0;
 font-family:Arial;
+margin:0;
 background:#f2f2f2;
 }
 
 header{
 background:#0071ce;
 color:white;
-padding:10px;
-}
-
-.top{
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -31,16 +28,15 @@ text-decoration:none;
 font-weight:bold;
 }
 
-.info{
-font-size:14px;
-margin-top:5px;
+.section{
+display:none;
+padding:20px;
 }
 
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
-padding:15px;
 }
 
 .card{
@@ -56,35 +52,15 @@ border-radius:10px;
 }
 
 button{
-width:100%;
 padding:10px;
-margin-top:5px;
+margin:5px;
 border:none;
 border-radius:8px;
 font-weight:bold;
 }
 
-.add{
-background:#0071ce;
-color:white;
-}
-
-.order{
-background:#2ecc71;
-color:white;
-}
-
-.cartBox{
-position:fixed;
-top:70px;
-right:10px;
-background:white;
-padding:10px;
-border-radius:10px;
-width:200px;
-display:none;
-box-shadow:0 0 10px rgba(0,0,0,0.2);
-}
+.add{background:#0071ce;color:white;}
+.order{background:#2ecc71;color:white;}
 
 .whatsapp{
 position:fixed;
@@ -95,33 +71,30 @@ color:white;
 padding:15px;
 border-radius:50px;
 text-decoration:none;
-font-weight:bold;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
 
-<div class="top">
 <h2>T.castore</h2>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Login</a>
-<a href="#">Register</a>
-<a href="#" onclick="toggleCart()">🛒 <span id="count">0</span></a>
+<a href="#" onclick="show('home')">Home</a>
+<a href="#" onclick="show('login')">Login</a>
+<a href="#" onclick="show('register')">Register</a>
 </nav>
-</div>
-
-<div class="info">
-📞 Téléphone: 35206180 | 🚚 Livraison gratuite
-</div>
 
 </header>
+
+<div style="padding:10px">
+📞 35206180 | 🚚 Livraison gratuite
+</div>
+
+<div id="home" class="section" style="display:block">
 
 <div class="products">
 
@@ -129,83 +102,79 @@ font-weight:bold;
 <img src="https://i.imgur.com/7yUvePI.png">
 <h3>Dove</h3>
 <p>$5</p>
-<button class="add" onclick="addItem('Dove')">Ajouter</button>
-<button class="order">Commander</button>
+<button class="add">Ajouter</button>
+<button class="order" onclick="order('Dove')">Commander</button>
 </div>
 
 <div class="card">
 <img src="https://i.imgur.com/6qK9XbT.png">
 <h3>Secret</h3>
 <p>$7</p>
-<button class="add" onclick="addItem('Secret')">Ajouter</button>
-<button class="order">Commander</button>
+<button class="add">Ajouter</button>
+<button class="order" onclick="order('Secret')">Commander</button>
 </div>
 
 <div class="card">
 <img src="https://i.imgur.com/1H9Z1ZK.png">
 <h3>Vaseline</h3>
 <p>$4</p>
-<button class="add" onclick="addItem('Vaseline')">Ajouter</button>
-<button class="order">Commander</button>
+<button class="add">Ajouter</button>
+<button class="order" onclick="order('Vaseline')">Commander</button>
 </div>
 
 <div class="card">
 <img src="https://i.imgur.com/4YQZ4sO.png">
 <h3>Cerave</h3>
 <p>$10</p>
-<button class="add" onclick="addItem('Cerave')">Ajouter</button>
-<button class="order">Commander</button>
+<button class="add">Ajouter</button>
+<button class="order" onclick="order('Cerave')">Commander</button>
 </div>
 
 </div>
+</div>
 
-<div class="cartBox" id="cart">
-<h4>Panier</h4>
-<ul id="list"></ul>
-<p>🚚 Livraison gratuite</p>
+<div id="login" class="section">
+
+<h2>Login</h2>
+
+<input placeholder="Email"><br><br>
+<input placeholder="Password" type="password"><br><br>
+
+<button onclick="alert('Connexion réussie')">Login</button>
+
+</div>
+
+<div id="register" class="section">
+
+<h2>Register</h2>
+
+<input placeholder="Nom"><br><br>
+<input placeholder="Email"><br><br>
+<input placeholder="Password" type="password"><br><br>
+
+<button onclick="alert('Compte créé')">Register</button>
+
 </div>
 
 <a class="whatsapp" href="https://wa.me/50935206180">WhatsApp</a>
 
 <script>
 
-let cart=[]
+function show(page){
 
-function addItem(name){
+document.getElementById("home").style.display="none"
+document.getElementById("login").style.display="none"
+document.getElementById("register").style.display="none"
 
-cart.push(name)
-
-document.getElementById("count").innerText=cart.length
-
-let li=document.createElement("li")
-
-li.innerText=name
-
-let btn=document.createElement("button")
-
-btn.innerText="X"
-
-btn.onclick=function(){
-li.remove()
-cart.pop()
-document.getElementById("count").innerText=cart.length
-}
-
-li.appendChild(btn)
-
-document.getElementById("list").appendChild(li)
+document.getElementById(page).style.display="block"
 
 }
 
-function toggleCart(){
+function order(product){
 
-let box=document.getElementById("cart")
+let message="Bonjour je veux commander "+product
 
-if(box.style.display=="block"){
-box.style.display="none"
-}else{
-box.style.display="block"
-}
+window.open("https://wa.me/50935206180?text="+message)
 
 }
 
